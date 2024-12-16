@@ -35,8 +35,7 @@
     {
         EXPIRED,
         HIGHRISK,
-        MEDIUMRISK,
-        UNCATEGORIZED
+        MEDIUMRISK
     }
 
     public enum ValidClientSector
