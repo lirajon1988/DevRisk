@@ -32,7 +32,7 @@ Console.WriteLine();
 Console.WriteLine("OUTPUT");
 foreach (var trade in Trades)
 {
-    Console.WriteLine(trade.CheckTradeClassification(ReferenceDate.Value));
+    Console.WriteLine(trade.CheckTradeCategory(ReferenceDate.Value));
 }
 
 #region Inputs
@@ -78,7 +78,7 @@ bool InputTrades(int lineNumber)
     }
 
     var trade = new Trade(price, clientSector, paymentDate);
-    if (trade.CheckTradeClassification(ReferenceDate.Value) == Classification.INVALID)
+    if (trade.CheckTradeCategory(ReferenceDate.Value) == null)
     {
         Trades.Add(trade);
         Console.WriteLine("Trade added!");
@@ -86,7 +86,7 @@ bool InputTrades(int lineNumber)
     }
     else
     {
-        Console.WriteLine("Invalid classification!");
+        Console.WriteLine("Invalid category!");
         return false;
     }
 

@@ -13,17 +13,17 @@
             NextPaymentDate = nextPendingDate;
         }
 
-        public Classification CheckTradeClassification(DateTime referenceDate)
+        public Category? CheckTradeCategory(DateTime referenceDate)
         {
 
             if (IsExpired(referenceDate))
-                return Classification.EXPIRED;
+                return Category.EXPIRED;
             if (IsHighRisk())
-                return Classification.HIGHRISK;
+                return Category.HIGHRISK;
             if (IsMediumRisk())
-                return Classification.MEDIUMRISK;
+                return Category.MEDIUMRISK;
             else
-                return Classification.INVALID;
+                return null;
         }
 
         private bool IsExpired(DateTime referenceDate) => (NextPaymentDate > referenceDate);
@@ -31,12 +31,12 @@
         private bool IsMediumRisk() => (Value > 1000000 && ClientSector == "PUBLIC");
     }
         
-    public enum Classification
+    public enum Category
     {
         EXPIRED,
         HIGHRISK,
         MEDIUMRISK,
-        INVALID
+        UNCATEGORIZED
     }
 
     public enum ValidClientSector
